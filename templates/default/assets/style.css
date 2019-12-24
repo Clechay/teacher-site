@@ -1,0 +1,19 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+body{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#content{
+	flex-grow: 1;
+}
+#menu{
+	width: 20rem;
+	max-width: 100%;
+}

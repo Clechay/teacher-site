@@ -1,0 +1,21 @@
+extends layout.pug
+block contentInnerHTML
+	for val,id in group.classes
+		.class
+			h3= val.topic
+			h5= val.no + " - " + val.date
+			section
+				h4 agenda:
+				div=val.agenda
+			section
+				h4 summary:
+				div=val.summary
+			section
+				h4 notes:
+				div=val.notes
+			section
+				h4 homework:
+				div=val.homework
+			section
+				h4 materials:
+				div=val.materials
