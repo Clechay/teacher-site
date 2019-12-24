@@ -1,0 +1,15 @@
+{
+	"subjects": [
+		"NodeJS",
+		"SocketIO",
+		"Canvas",
+		"JS",
+		"HTML+CSS+JS"
+	],
+	"groups": [
+		{
+			"slug": "monday-0830",
+			"place": "Street name 40/4"
+		}
+	]
+}

@@ -2,7 +2,9 @@
 
 ## static site generator made for teachers and academic personnel
 
-## It doesn't work just yet
+unfortunately content editing is still a manual process
+
+you can reverse engineer example project while documentation is beeing written
 
 ## How to use as CLI
 
