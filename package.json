@@ -1,6 +1,6 @@
 {
   "name": "teacher-site",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "author": "Clechay <luke.clechay@gmail.com>",
   "license": "MIT",
@@ -8,5 +8,8 @@
     "commander": "^4.0.1",
     "fs-extra": "^8.1.0",
     "pug": "^2.0.4"
+  },
+  "bin": {
+    "tsite": "./cli/index.js"
   }
 }

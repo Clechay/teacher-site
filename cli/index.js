@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 require('../src/typedefs');
 
 const program = require('commander'),
@@ -26,8 +27,11 @@ async function init_cmd(options) {
 	fse.emptyDirSync(paths.project);
 	await mkDir(paths.template);
 	await mkDir(paths.content);
+	await mkDir(paths.classes);
 	await mkDir(paths.dist);
 	await writeFile(paths.config, `{}`);
+	await writeFile(path.join(paths.content,'meta.json'), `{"subjects": [],"groups": []}`);
+	await fse.copy(paths.defaultTemplate, paths.template);
 	console.log('[OK!] empty project is ready!')
 }
 
