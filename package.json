@@ -7,7 +7,8 @@
   "dependencies": {
     "commander": "^4.0.1",
     "fs-extra": "^8.1.0",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "quick-cli": "^2.0.0"
   },
   "bin": {
     "tsite": "./cli/index.js"
