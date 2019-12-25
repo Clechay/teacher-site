@@ -11,6 +11,10 @@ you can reverse engineer example project while documentation is beeing written
 1. Install teacher-site globally from npm.
 2. To create new project (new site) use `tsite init` in an empty directory.
 3. Then use `tsite build` to build your static website.
+4. Some content management can already be done with CLI
+    * `tsite add group` adds group to project
+    * `tsite add class` adds class to project
+    * `tsite add subject` adds subject to project
 
 ## How to use as API
 
