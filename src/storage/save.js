@@ -1,9 +1,8 @@
 const fs = require("fs");
 const util = require('util');
 const path = require('path');
-const paths = require('./paths')
-
-console.log(paths)
+const buildPaths = require('../paths').buildProjectPaths;
+let paths = {};
 
 const readDir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
@@ -52,7 +51,9 @@ function buildClasses(content){
 	return result;
 }
 
-async function save(cnt){
+
+async function save(cnt,projectPath){
+	paths = buildPaths(projectPath);
 	await clear();
 	console.log(buildMeta(cnt))
 	console.log(buildClasses(cnt))

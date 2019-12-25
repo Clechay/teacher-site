@@ -38,3 +38,4 @@ you can reverse engineer example project while documentation is beeing written
 * interactive `add`
 * interactive `edit`
 * add more templates
+* maybe init should create loaded project and save it

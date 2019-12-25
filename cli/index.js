@@ -15,38 +15,16 @@ const readDir = util.promisify(fs.readdir),
 	unLink = util.promisify(fs.unlink),
 	writeFile = util.promisify(fs.writeFile);
 
-const paths = require("./paths")(process.cwd());
+const pathBuilders = require('../src/paths');
+const paths = {
+	project: pathBuilders.buildProjectPaths(process.cwd()),
+	module: pathBuilders.buildModulePaths()
+}
+
 const { load, build } = require('../src/index');
 
-async function init_cmd(options) {
-	const cwdLs = readDir(paths.project);
-	if (cwdLs && cwdLs.length) {
-		console.error("CWD not empty, init aborted");
-		return;
-	}
-	fse.emptyDirSync(paths.project);
-	await mkDir(paths.template);
-	await mkDir(paths.content);
-	await mkDir(paths.classes);
-	await mkDir(paths.dist);
-	await writeFile(paths.config, `{}`);
-	await writeFile(path.join(paths.content,'meta.json'), `{"subjects": [],"groups": []}`);
-	await fse.copy(paths.defaultTemplate, paths.template);
-	console.log('[OK!] empty project is ready!')
-}
-
-async function build_cmd(options) {
-	const ctn = await load({fromDir:paths.project});
-	console.log(paths);
-	console.log(paths.dist);
-	// emptyDirSync(paths.dist);
-	await build(ctn, {
-		content: ctn,
-		template: paths.template,
-		toDir: paths.dist
-	})
-	console.log('[OK!] all done!')
-}
+const build_cmd = require('./build_cmd');
+const init_cmd = require('./init_cmd');
 
 program
 	.command('init')

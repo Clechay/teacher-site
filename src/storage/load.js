@@ -3,7 +3,7 @@ require("../typedefs");
 const fs = require("fs");
 const util = require('util');
 const path = require('path');
-const buildPaths = require('./paths')
+const buildPaths = require('../paths').buildProjectPaths;
 
 const readDir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);

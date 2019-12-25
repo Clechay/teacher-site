@@ -5,15 +5,6 @@ const util = require('util');
 const process = require('process');
 const path = require('path');
 
-let paths = require('./paths')(process.cwd());
-
-const storage = require('../storage');
-
-const readDir = util.promisify(fs.readdir);
-const readFile = util.promisify(fs.readFile);
-const mkDir = util.promisify(fs.mkdir);
-const rmDir = util.promisify(fs.rmdir);
-const unLink = util.promisify(fs.unlink);
 const writeFile = util.promisify(fs.writeFile);
 
 /**
@@ -73,7 +64,7 @@ async function render(cnt, options) {
 	}
 
 	const indexRender = renderers.index(pd);
-	const indexPath = path.join(paths.dist,'index.html');
+	const indexPath = path.join(options.toDir,'index.html');
 	await writeFile(indexPath, indexRender);
 
 	const groups = cnt.groups;
@@ -83,7 +74,7 @@ async function render(cnt, options) {
 		console.log("locals:");
 		console.log(locals);
 		const render = renderers.group(locals);
-		const groupPath = path.join(paths.dist,group.slug+'.html');
+		const groupPath = path.join(options.toDir,group.slug+'.html');
 		await writeFile(groupPath, render);
 	}
 }
