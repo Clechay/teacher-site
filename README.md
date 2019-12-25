@@ -35,7 +35,8 @@ you can reverse engineer example project while documentation is beeing written
 * `edit <group|class|location|subject>` command
 * `load-template` command
 * interactive `init`
-* interactive `add`
 * interactive `edit`
 * add more templates
 * maybe init should create loaded project and save it
+* class slug should be autogen as it's generated in save>buildClasses
+* add class should support multiline input
