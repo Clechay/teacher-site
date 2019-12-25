@@ -5,7 +5,7 @@ const pathBuilders = require('../src/paths');
 
 async function build_cmd(options) {
 	const projectPath = process.cwd();
-	const paths = pathBuilders.buildProjectPaths();
+	const paths = pathBuilders.buildProjectPaths(projectPath);
 	const ctn = await load({fromDir:paths.root});
 	await fse.emptyDir(paths.dist);
 	await build(ctn, {
