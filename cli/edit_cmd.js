@@ -5,6 +5,17 @@ const pathBuilders = require('../src/paths');
 const {load, save} = require('../src');
 const paths = pathBuilders.buildProjectPaths(process.cwd());
 
+async function multilaneInput(str) {
+	let result = "";
+	let last = "init";
+	for(let i = 1; last !== ""; i++){
+		last = await cli.input.text(`${str} (${i})`);
+		result += last + "\n";
+	}
+	return result;
+}
+
+
 /**
  * @param {Content} cnt 
  */
@@ -33,11 +44,11 @@ async function addClass(cnt) {
 		slug: await cli.input.text(`slug`),
 		topic: await cli.input.text(`topic`),
 		subjects: await cli.input.checkbox('subjects',cnt.meta.subjects),
-		agenda: await cli.input.text(`agenda`),
-		summary: await cli.input.text(`summary`),
-		notes: await cli.input.text(`notes`),
-		homework: await cli.input.text(`homework`),
-		materials: await cli.input.text(`materials`),
+		agenda: await multilaneInput(`agenda`),
+		summary: await multilaneInput(`summary`),
+		notes: await multilaneInput(`notes`),
+		homework: await multilaneInput(`homework`),
+		materials: await multilaneInput(`materials`),
 	}
 	cnt.classes.push(newClass);
 }

@@ -38,4 +38,3 @@ you can reverse engineer example project while documentation is beeing written
 * add more templates
 * maybe init should create loaded project and save it
 * class slug should be autogen as it's generated in save>buildClasses
-* add class should support multiline input
