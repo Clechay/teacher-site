@@ -28,7 +28,6 @@ you can reverse engineer example project while documentation is beeing written
 
 #### small issues
 
-* `add <group|class|location|subject>` command
 * `remove <group|class|location|subject>` command
 * `ls <group|class|location|subject>` command
 * `watch` command
