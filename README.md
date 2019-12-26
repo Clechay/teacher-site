@@ -15,6 +15,7 @@ you can reverse engineer example project while documentation is beeing written
     * `tsite add group` adds group to project
     * `tsite add class` adds class to project
     * `tsite add subject` adds subject to project
+    * `tsite remove class [-g group-slug]` remove class from group
 
 ## How to use as API
 
@@ -32,7 +33,7 @@ you can reverse engineer example project while documentation is beeing written
 
 #### small issues
 
-* `remove <group|class|location|subject>` command
+* `remove <group|location|subject>` command
 * `ls <group|class|location|subject>` command
 * `watch` command
 * `edit <group|class|location|subject>` command
