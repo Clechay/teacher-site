@@ -26,7 +26,14 @@ program
 	.command('add <subject>')
 	.description('builds project')
 	.action(async (subject) => {
-		edit_cmd('add',subject);
+		edit_cmd('add', subject);
+	});
+program
+	.command('remove <subject>')
+	.option('-g, --group <slug>', 'show only classes of this particular group')
+	.description('builds project')
+	.action(async (subject, options) => {
+		edit_cmd('remove', subject, options);
 	});
 
 

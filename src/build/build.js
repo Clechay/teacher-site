@@ -37,8 +37,6 @@ function processData(content) {
  * @returns {ProcessedContent & {groupSelected:Group}}
  */
 function processDataGroup(processedContent,groupId) {
-	console.log("PC:", processedContent);
-	console.log("GID: ",groupId);
 	processedContent.groupSelected = processedContent.groups[groupId];
 	const active = processedContent.menu.find(me => me.name === groupId);
 	if(active) active["active"]=true;
@@ -80,8 +78,6 @@ async function render(cnt, options) {
 	for (const groupID in groups) {
 		const group = groups[groupID];
 		const locals = options.dataProcessing.group( processDataGroup(pd,groupID) );
-		console.log("locals:");
-		console.log(locals);
 		const render = renderers.group(locals);
 		const groupPath = path.join(options.toDir,group.slug+'.html');
 		await writeFile(groupPath, render);

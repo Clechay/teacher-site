@@ -3,17 +3,12 @@ const program = require('commander'),
 	fse = require("fs-extra"),
 	util = require('util'),
 	path = require('path'),
-	process = require('process'),
-	cli = require("quick-cli");
+	process = require('process');
 
-const ok = (...str) => cli.out("success", "[OK!] ", ...(str.map( el => String(el))));
-const fail = (...str) => cli.out("error", "[FAILED] ", ...(str.map( el => String(el))));
+const {fail,ok} = require('./cli');
 
 const readDir = util.promisify(fs.readdir),
-	readFile = util.promisify(fs.readFile),
 	mkDir = util.promisify(fs.mkdir),
-	rmDir = util.promisify(fs.rmdir),
-	unLink = util.promisify(fs.unlink),
 	writeFile = util.promisify(fs.writeFile);
 
 const pathBuilders = require('../src/paths');

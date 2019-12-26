@@ -13,7 +13,6 @@ const writeFile = util.promisify(fs.writeFile);
 
 async function clear(){
 	const classesPaths = await readDir(paths.classes);
-	console.log(classesPaths)
 	for (const classFilename of classesPaths) {
 		await unLink( path.join(paths.classes, classFilename) );
 	}
@@ -55,8 +54,6 @@ function buildClasses(content){
 async function save(cnt,projectPath){
 	paths = buildPaths(projectPath);
 	await clear();
-	console.log(buildMeta(cnt))
-	console.log(buildClasses(cnt))
 	await writeFile(paths.meta, buildMeta(cnt))
 	const classes = buildClasses(cnt);
 	for (const classObj of classes) {

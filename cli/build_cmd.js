@@ -2,6 +2,7 @@ const fse = require("fs-extra"),
 		process = require('process');
 
 const pathBuilders = require('../src/paths');
+const {load, build} = require('../src');
 
 async function build_cmd(options) {
 	const projectPath = process.cwd();
