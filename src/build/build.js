@@ -1,3 +1,5 @@
+require('../typedefs');
+
 const pug = require('pug');
 const fs = require("fs");
 const fse = require("fs-extra");
@@ -44,11 +46,18 @@ function processDataGroup(processedContent,groupId) {
 }
 
 /**
+ * @typedef {Object} dataProcessing
+ * @property {(cnt:Content)=>Content} general
+ * @property {(cnt:Content)=>Content} group
+ */
+
+/**
  * @typedef {Object} renderOptions
  *	@property {Content} content - Content to be rendered
  *	@property {string} toDir - path to dist directory
  *	@property {Object} renderIndex - pug renderer for index view
  *	@property {Object} renderGroup - pug renderer for group view
+ *	@property {dataProcessing} dataProcessing - pug renderer for group view
  */
 
 /**
@@ -56,7 +65,7 @@ function processDataGroup(processedContent,groupId) {
  * @param {renderOptions} options 
  */
 async function render(cnt, options) {
-	const pd = processData(cnt);
+	const pd = options.dataProcessing.general( processData(cnt) );
 
 	const renderers = {
 		index: options.renderIndex,
@@ -70,7 +79,7 @@ async function render(cnt, options) {
 	const groups = cnt.groups;
 	for (const groupID in groups) {
 		const group = groups[groupID];
-		const locals = processDataGroup(pd,groupID);
+		const locals = options.dataProcessing.group( processDataGroup(pd,groupID) );
 		console.log("locals:");
 		console.log(locals);
 		const render = renderers.group(locals);
@@ -97,7 +106,8 @@ async function build(cnt, options) {
 		content: cnt,
 		toDir: options.toDir,
 		renderIndex: pug.compileFile(path.join(options.template,'index.pug')),
-		renderGroup: pug.compileFile(path.join(options.template,'group.pug'))
+		renderGroup: pug.compileFile(path.join(options.template,'group.pug')),
+		dataProcessing: require(path.join(options.template,'dataProcessing.js'))
 	}
 
 	fse.emptyDir(options.toDir);
