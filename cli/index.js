@@ -7,6 +7,7 @@ const program = require('commander'),
 const build_cmd = require('./build_cmd');
 const init_cmd = require('./init_cmd');
 const edit_cmd = require('./edit_cmd');
+const serve = require('./webserver/start');
 
 program
 	.command('init')
@@ -34,6 +35,12 @@ program
 	.description('builds project')
 	.action(async (subject, options) => {
 		edit_cmd('remove', subject, options);
+	});
+program
+	.command('web [port]')
+	.description('serve editor')
+	.action(async (port) => {
+		await serve.start(process.cwd(), port);
 	});
 
 
