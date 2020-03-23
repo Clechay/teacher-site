@@ -14,8 +14,20 @@ async function multilaneInput(str) {
 	return result;
 }
 
+async function attempt(func, primaryMsg, badMsg) {
+	const goodMsg = primaryMsg;
+	try {
+		await func();
+		ok(goodMsg);
+	} catch (error) {
+		fail(badMsg);
+		throw new Error(error);
+	}
+}
+
 module.exports = {
 	ok,
 	fail,
-	multilaneInput
+	multilaneInput, 
+	attempt
 }
