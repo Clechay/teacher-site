@@ -12,10 +12,11 @@
 
 /**
  * @typedef {Object} ClassObj
- *	@property {String} date
+ *	@property {String} date dd-mm-rrrr
  *	@property {String} group
  *	@property {String} no
- *	@property {String} slug
+ *	@property {String[]} slugs
+ *	@property {String} primary_slug
  *	@property {String} topic
  *	@property {String} agenda
  *	@property {String} summary
@@ -34,7 +35,7 @@
  * @typedef {Object} Content
  * @property {Meta} meta
  * @property {Object.<string, Group>} groups
- * @property {ClassObj[]} classes - read only
+ * @property {ClassObj[]} classes read only
  */
 
 // module.exports = {unused:{}};
