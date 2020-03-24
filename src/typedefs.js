@@ -34,7 +34,7 @@
  * @typedef {Object} Content
  * @property {Meta} meta
  * @property {Object.<string, Group>} groups
- * @property {ClassObj[]} classes
+ * @property {ClassObj[]} classes - read only
  */
 
 // module.exports = {unused:{}};
