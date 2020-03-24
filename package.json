@@ -17,6 +17,7 @@
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "koa-static": "^5.0.0",
+    "lodash": "^4.17.15",
     "pug": "^2.0.4",
     "quick-cli": "^2.0.0"
   },
